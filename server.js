@@ -37,9 +37,8 @@ MongoClient.connect('mongodb+srv://crm-api:crm-api@cluster0.z9dho.mongodb.net/my
 	});
 
 	app.get(baseApiPath + '/interactions/:idInteracao', (req, res) => {
-
 		if (req.params.idInteracao) {
-			db.collection('interacoes').find({idInteracao: parseInt(req.params.idInteracao)})
+			db.collection('interacoes').find({_id: ObjectID(req.params.idInteracao)})
 			.forEach(doc => res.send(doc));
 		} else {
 			res.json([]);
@@ -47,11 +46,10 @@ MongoClient.connect('mongodb+srv://crm-api:crm-api@cluster0.z9dho.mongodb.net/my
 	});
 
 	app.put(baseApiPath + '/interactions/:idInteracao', (req, res) => {
-		const id = req.body._id;
 		delete req.body._id;
 		req.body.idCliente = parseInt(req.body.idCliente);
 		if (req.params.idInteracao) {
-			db.collection('interacoes').updateOne({_id: ObjectID(id)}, {
+			db.collection('interacoes').updateOne({_id: ObjectID(req.params.idInteracao)}, {
 				$set: {...req.body}
 			}).then(result => {
 				res.json([]);
@@ -62,8 +60,8 @@ MongoClient.connect('mongodb+srv://crm-api:crm-api@cluster0.z9dho.mongodb.net/my
 	});
 
 	app.post(baseApiPath + '/interactions', (req, res) => {
-
 		if (req.body) {
+			delete req.body._id;
 			console.log(req.body);
 			req.body.idCliente = parseInt(req.body.idCliente)
 			db.collection('interacoes').insertOne({
@@ -79,7 +77,8 @@ MongoClient.connect('mongodb+srv://crm-api:crm-api@cluster0.z9dho.mongodb.net/my
 	app.delete(baseApiPath + '/interactions/:idInteracao', (req, res) => {
 
 		if (req.params.idInteracao) {
-			db.collection('interacoes').deleteOne({idInteracao: parseInt(req.params.idInteracao)})
+			db.collection('interacoes').deleteOne({_id: ObjectID(req.params.idInteracao)})
+			.then(() => res.send([]));
 		} else {
 			res.json([]);
 		}
