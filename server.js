@@ -36,5 +36,15 @@ MongoClient.connect('mongodb+srv://crm-api:crm-api@cluster0.z9dho.mongodb.net/my
 		}
 	});
 
+	app.get(baseApiPath + '/interactions/:idInteracao', (req, res) => {
+
+		if (req.params.idInteracao) {
+			db.collection('interacoes').find({idInteracao: parseInt(req.params.idInteracao)})
+			.forEach(doc => res.send(doc));
+		} else {
+			res.json([]);
+		}
+	});
+
 }).catch(console.error)
 
