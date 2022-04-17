@@ -55,7 +55,31 @@ MongoClient.connect('mongodb+srv://crm-api:crm-api@cluster0.z9dho.mongodb.net/my
 				$set: {...req.body}
 			}).then(result => {
 				res.json([]);
-			})
+			});
+		} else {
+			res.json([]);
+		}
+	});
+
+	app.post(baseApiPath + '/interactions', (req, res) => {
+
+		if (req.body) {
+			console.log(req.body);
+			req.body.idCliente = parseInt(req.body.idCliente)
+			db.collection('interacoes').insertOne({
+				...req.body
+			}).then(result => {
+				res.json(result);
+			});
+		} else {
+			res.json([]);
+		}
+	});
+
+	app.delete(baseApiPath + '/interactions/:idInteracao', (req, res) => {
+
+		if (req.params.idInteracao) {
+			db.collection('interacoes').deleteOne({idInteracao: parseInt(req.params.idInteracao)})
 		} else {
 			res.json([]);
 		}
