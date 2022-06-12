@@ -7,7 +7,11 @@ var ProdutoSchema = new Schema({
     nome: String,
     desc: String,
     preco: Number,
-	servico: Boolean
+	tipo: {
+		type: String,
+		enum: ['S', 'C'],
+		default: 'S'
+	}
 });
 
 module.exports = mongoose.model('ProdutoModel', ProdutoSchema);
