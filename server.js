@@ -14,9 +14,9 @@ app.use(cors());
 app.use('/produtos', produtoRouter);
 
 app.get('/', function(req, res) {
-    res.send("Servidor respondeu...");
+    res.send('Servidor respondeu...');
 });
 
 app.listen(3000, function() {
-    console.log("Servidor rodando em localhost:3000");
+    console.log('listening to port 3000');
 });

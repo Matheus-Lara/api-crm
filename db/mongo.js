@@ -11,7 +11,7 @@ const db = mongoose.connect(URL, {
 const con = mongoose.connection;
 
 con.on('open', function(){
-  console.log('Conectado ao MongoDB!');
+  console.log('Connected to database!');
 });
 
 con.on('error', function(){
