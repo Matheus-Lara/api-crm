@@ -11,7 +11,7 @@ app.use(morgan('dev'));
 app.use(express.urlencoded({'extended': true}));
 app.use(express.json());
 app.use(cors());
-app.use('/produtos', produtoRouter);
+app.use('/products', produtoRouter);
 
 app.get('/', function(req, res) {
     res.send('Servidor respondeu...');
