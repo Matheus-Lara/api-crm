@@ -9,8 +9,8 @@ var ProdutoSchema = new Schema({
     preco: Number,
 	tipo: {
 		type: String,
-		enum: ['S', 'C'],
-		default: 'S'
+		enum: ['S', 'P'],
+		default: 'P'
 	}
 });
 

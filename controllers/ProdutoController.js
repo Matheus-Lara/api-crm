@@ -1,39 +1,60 @@
-const produtoModel = require('../models/ProdutoModel');
+const HttpErrors = require('../HttpErrors');
+const service = require('../Services/ProdutoService');
 
 class ProdutoController {
 
     async salvar(req, res) {
-        const max = await produtoModel.findOne({}).sort({codigo: -1});
-        const produto = req.body;
-        produto.codigo = max == null ? 1 : max.codigo + 1;
+		let validationErrors = service.validate(req.body);
 
-        const resultado = await produtoModel.create(produto);
-        res.status(201).json(resultado);
+		if (validationErrors.length) {
+			return HttpErrors.responseError(res, validationErrors);
+		}
+
+		let resultado = await service.save(req.body);
+        return res.status(201).json(resultado);
     }
 
     async listar(req, res) {
-        const resultado = await produtoModel.find({});
-        res.status(200).json(resultado);
+		const resultado = await service.getAll();
+        return res.status(200).json(resultado);
     }
 
     async buscarPorCodigo(req, res) {
-        const codigo = String(req.params.codigo);
-        const resultado = await produtoModel.findOne({'codigo': codigo});
-        res.status(200).json(resultado);
+		const resultado = await service.getByCodigo(req.params.codigo);
+
+		if (!resultado) {
+			return HttpErrors.responseNotFound(res);
+		}
+
+        return res.status(200).json(resultado);
     }
 
     async atualizar(req, res) {
-        const codigo = req.params.codigo;
-        const _id = (await produtoModel.findOne({'codigo': codigo}))._id;    
-        await produtoModel.findByIdAndUpdate(String(_id), req.body);
-        res.status(200).send();
+		const result = await service.getByCodigo(req.params.codigo);
+
+		if (!result) {
+			return HttpErrors.responseNotFound(res);
+		}
+
+		let validationErrors = service.validate(req.body, true);
+
+		if (validationErrors.length) {
+			return HttpErrors.responseError(res, validationErrors);
+		}
+
+		let updated = await service.update(String(result._id), req.body);
+        return res.status(200).json(updated);
     }
 
     async excluir(req, res) {
-        const codigo = req.params.codigo;
-        const _id = (await produtoModel.findOne({'codigo': codigo}))._id;  
-        await produtoModel.findByIdAndRemove(String(_id));
-        res.status(200).send();
+		const result = await service.getByCodigo(req.params.codigo);
+
+		if (!result) {
+			return HttpErrors.responseNotFound(res);
+		}
+	
+        await service.delete(String(result._id));
+        return res.status(204).send();
     }
 }
 
