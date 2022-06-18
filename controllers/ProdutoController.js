@@ -56,6 +56,11 @@ class ProdutoController {
         await service.delete(String(result._id));
         return res.status(204).send();
     }
+
+	async getNextCodigo(req, res) {
+		const max = await service.getNextCodigo();
+		res.status(200).json({nextCodigo: max});
+	}
 }
 
 module.exports = new ProdutoController();
