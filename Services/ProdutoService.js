@@ -25,13 +25,20 @@ class ProdutoService {
 		return await model.findByIdAndRemove(id);
 	}
 
-	validate(data, validateOnlyTypes = false) {
-		let errors = RequiredFieldsValidator.validate(data, {
+	validate(data, updating = false) {
+		let errors = [];
+		let fieldsConfig = {
 			'nome': 'string',
 			'desc': 'string',
 			'tipo': 'string',
 			'preco': 'number'
-		}, validateOnlyTypes);
+		};
+
+		if (!updating) {
+			errors = RequiredFieldsValidator.validateForCreate(data, fieldsConfig);
+		} else {
+			errors = RequiredFieldsValidator.validateForUpdate(data, fieldsConfig);
+		}
 
 		if (data.tipo && !['S', 'P'].includes(data.tipo)) {
 			errors.push({tipo: 'O tipo informado é inválido, informe \'S\' (serviço) ou \'P\' (produto)'});
