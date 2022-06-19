@@ -8,6 +8,10 @@ class ProdutoService {
 	}
 
 	async getById(id) {
+		if (String(id).length !== 24) {
+			return null;
+		}
+
 		return await model.findOne({'_id': id});
 	}
 
