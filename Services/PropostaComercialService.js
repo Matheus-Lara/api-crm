@@ -89,6 +89,10 @@ class PropostaComercialService {
 			errors.push({idCondicaoPagamento: 'A condição de pagamento informada não existe'});
 		}
 
+		if (!data.itens.length) {
+			errors.push({itens: 'É necessário informar ao menos um item'});
+		}
+
 		if (data.itens && data.itens.length) {
 			for (let item of data.itens) {
 				let produto = await produtoService.getById(item.idProduto);
