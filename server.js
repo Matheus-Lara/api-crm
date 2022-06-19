@@ -1,4 +1,5 @@
 require('./db/mongo');
+const HttpErrors = require('./HttpErrors');
 
 const exp = require('constants');
 const express = require('express');
@@ -19,4 +20,8 @@ app.get('/', function(req, res) {
 
 app.listen(3000, function() {
     console.log('listening to port 3000');
+});
+
+app.use(function(req, res) {
+	res.status(404).json(HttpErrors.NOT_FOUND);
 });
