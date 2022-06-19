@@ -7,6 +7,8 @@ var ClienteSchema = new Schema({
     cpfCnpj: String,
     cep: String,
     endereco: String,
+	bairro: String,
+	complemento: String,
     numero: String,
     cidade: String,
     UF: String,

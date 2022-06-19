@@ -33,6 +33,7 @@ class ClienteService {
 		let fieldsConfig = {
 			'tipo': 'string',
 			'nome': 'string',
+			'bairro': 'string',
 			'cpfCnpj': 'string',
 			'cep': 'string',
 			'endereco': 'string',
