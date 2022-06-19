@@ -36,13 +36,17 @@ class InteracaoService {
 			'idCliente': 'string',
 			'meioContato': 'string',
 			'descricao': 'string',
-			'clienteRespondeu': 'boolean'
+			'clienteRespondeu': 'string'
 		};
 
 		if (!updating) {
 			errors = RequiredFieldsValidator.validateForCreate(data, fieldsConfig);
 		} else {
 			errors = RequiredFieldsValidator.validateForUpdate(data, fieldsConfig);
+		}
+
+		if (data.clienteRespondeu && !['S', 'N'].includes(data.clienteRespondeu)) {
+			errors.push({clienteRespondeu: 'O valor deve ser \'S\' ou \'N\''});
 		}
 
 		let cliente = await clienteService.getById(data.idCliente);

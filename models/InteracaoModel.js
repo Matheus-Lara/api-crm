@@ -7,7 +7,10 @@ var InteracaoSchema = new Schema({
 	idCliente: String,
 	meioContato: String,
 	descricao: String,
-	clienteRespondeu: Boolean
+	clienteRespondeu: {
+		type: String,
+		enum: ['S', 'N']
+	}
 });
 
 module.exports = mongoose.model('InteracaoModel', InteracaoSchema);
