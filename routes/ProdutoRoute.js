@@ -5,7 +5,7 @@ const router = express.Router();
 router.post('/', produtoController.salvar);
 router.get('/', produtoController.listar);
 router.get('/nextCodigo', produtoController.getNextCodigo);
-router.get('/:id', produtoController.buscarPorCodigo);
+router.get('/:id', produtoController.buscarPorId);
 router.put('/:id', produtoController.atualizar);
 router.delete('/:id', produtoController.excluir);
 

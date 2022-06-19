@@ -19,7 +19,7 @@ class ProdutoController {
         return res.status(200).json(resultado);
     }
 
-    async buscarPorCodigo(req, res) {
+    async buscarPorId(req, res) {
 		const resultado = await service.getById(req.params.id);
 
 		if (!resultado) {
