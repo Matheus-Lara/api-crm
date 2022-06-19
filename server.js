@@ -7,6 +7,7 @@ const morgan = require('morgan');
 const cors = require('cors');
 const produtoRouter = require('./routes/ProdutoRoute');
 const clienteRouter = require('./routes/ClienteRoute');
+const interacaoRouter = require('./routes/InteracaoRoute');
 
 const app = express();
 app.use(morgan('dev'));
@@ -15,6 +16,7 @@ app.use(express.json());
 app.use(cors());
 app.use('/products', produtoRouter);
 app.use('/customers', clienteRouter);
+app.use('/interactions', interacaoRouter);
 
 app.get('/', function(req, res) {
     res.send('Servidor respondeu...');
