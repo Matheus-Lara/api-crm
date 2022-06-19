@@ -9,6 +9,7 @@ const produtoRouter = require('./routes/ProdutoRoute');
 const clienteRouter = require('./routes/ClienteRoute');
 const interacaoRouter = require('./routes/InteracaoRoute');
 const condicaoPagamentoRouter = require('./routes/CondicaoPagamentoRoute');
+const propostaComercialRouter = require('./routes/PropostaComercialRoute');
 
 const app = express();
 app.use(morgan('dev'));
@@ -19,6 +20,7 @@ app.use('/products', produtoRouter);
 app.use('/customers', clienteRouter);
 app.use('/interactions', interacaoRouter);
 app.use('/payment-conditions', condicaoPagamentoRouter);
+app.use('/commercial-proposals', propostaComercialRouter);
 
 app.get('/', function(req, res) {
     res.send('Servidor respondeu...');
