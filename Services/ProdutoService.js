@@ -12,6 +12,7 @@ class ProdutoService {
 	}
 
 	async save(requestData) {
+		delete requestData._id;
 		requestData.codigo = await this.getNextCodigo();
 		return await model.create(requestData);
 	}
