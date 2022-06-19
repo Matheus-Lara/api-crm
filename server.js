@@ -6,6 +6,7 @@ const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
 const produtoRouter = require('./routes/ProdutoRoute');
+const clienteRouter = require('./routes/ClienteRoute');
 
 const app = express();
 app.use(morgan('dev'));
@@ -13,6 +14,7 @@ app.use(express.urlencoded({'extended': true}));
 app.use(express.json());
 app.use(cors());
 app.use('/products', produtoRouter);
+app.use('/customers', clienteRouter);
 
 app.get('/', function(req, res) {
     res.send('Servidor respondeu...');
