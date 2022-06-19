@@ -16,6 +16,7 @@ class PropostaComercialService {
 		for (let proposal of proposals) {
 			let parsedProposal = {};
 			let cliente = await clienteService.getById(proposal.idCliente);
+			parsedProposal._id = proposal._id;
 			parsedProposal.dataCriacao = proposal.dataCriacao.toISOString().substring(0, 10);
 			parsedProposal.cliente = cliente.nome;
 			parsedProposal.status = this.getParsedStatus(proposal.status);
