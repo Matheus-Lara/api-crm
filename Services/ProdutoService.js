@@ -7,8 +7,8 @@ class ProdutoService {
 		return await model.find({});
 	}
 
-	async getByCodigo(codigo) {
-		return await model.findOne({'codigo': codigo});
+	async getById(id) {
+		return await model.findOne({'_id': id});
 	}
 
 	async save(requestData) {

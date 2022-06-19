@@ -20,7 +20,7 @@ class ProdutoController {
     }
 
     async buscarPorCodigo(req, res) {
-		const resultado = await service.getByCodigo(req.params.codigo);
+		const resultado = await service.getById(req.params.id);
 
 		if (!resultado) {
 			return HttpErrors.responseNotFound(res);
@@ -30,7 +30,7 @@ class ProdutoController {
     }
 
     async atualizar(req, res) {
-		const result = await service.getByCodigo(req.params.codigo);
+		const result = await service.getById(req.params.id);
 
 		if (!result) {
 			return HttpErrors.responseNotFound(res);
@@ -47,7 +47,7 @@ class ProdutoController {
     }
 
     async excluir(req, res) {
-		const result = await service.getByCodigo(req.params.codigo);
+		const result = await service.getById(req.params.id);
 
 		if (!result) {
 			return HttpErrors.responseNotFound(res);
