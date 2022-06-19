@@ -21,7 +21,7 @@ class RequiredFieldsValidator {
 		for (let field of Object.keys(data)) {
 			if (!data[field] && typesByField[field]) {
 				errors.push({[field]: 'Campo obrigatório'});
-			} else if (typeof data[field] != typesByField[field]) {
+			} else if (typesByField[field] && typeof data[field] != typesByField[field]) {
 				errors.push({[field]: 'Tipo de dado inválido. Informe um valor do tipo ' + typesByField[field]});
 			}
 		}
