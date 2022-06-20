@@ -90,7 +90,7 @@ class PropostaComercialService {
 		}
 
 		if (!data.itens.length) {
-			errors.push({itens: 'É necessário informar ao menos um item'});
+			errors.push({itens: 'É necessário inserir ao menos um item na proposta'});
 		}
 
 		if (data.itens && data.itens.length) {
