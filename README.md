@@ -1,6 +1,6 @@
 # api-crm
 
-this project aims to meet the requirements of the web development discipline project in the software engineering bachelor's course at Positivo University.
+This project aims to meet the requirements of the web development discipline project in the software engineering bachelor's course at Positivo University.
 
 A simple API that records products / services, customers, interactions, payment conditions and commercial proposals.
 
