@@ -1,0 +1,152 @@
+{
+	"info": {
+		"_postman_id": "e5aa5e60-43cf-412b-a5d0-ee9715599970",
+		"name": "customers",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "16537774"
+	},
+	"item": [
+		{
+			"name": "customers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{baseUrl}}/customers"
+			},
+			"response": []
+		},
+		{
+			"name": "customers/{id}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/customers/:id",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"customers",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "62b0f7473de9d4b34422f24d"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "customers",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"tipo\": \"F\",\n    \"nome\": \"Joao da Silva\",\n    \"cpfCnpj\": \"11143445910\",\n    \"cep\": \"83603125\",\n    \"endereco\": \"Rua da Pamonha\",\n    \"numero\": \"186\",\n    \"cidade\": \"Campo Largo\",\n    \"UF\": \"PR\",\n    \"bairro\": \"Jd. das Acacias\",\n    \"complemento\": \"frente a container\",\n    \"telefone\": \"41992395568\",\n    \"celular\": \"41985448412\",\n    \"email\": \"irmao@gmail.com\",\n    \"facebook\": \"https://facebook.com/joao-da-silva\",\n    \"infosAdicionais\": \"Adbasdhbabhhabdabajhdbajb\"\n}"
+				},
+				"url": "{{baseUrl}}/customers"
+			},
+			"response": []
+		},
+		{
+			"name": "customers/{id}",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"tipo\": \"F\",\n    \"nome\": \"Joao da Silva\",\n    \"cpfCnpj\": \"11143445910\",\n    \"cep\": \"83603125\",\n    \"endereco\": \"Rua da Pamonha\",\n    \"numero\": \"186\",\n    \"cidade\": \"Campo Largo\",\n    \"UF\": \"PR\",\n    \"bairro\": \"Jd. das Acacias\",\n    \"complemento\": \"frente a container\",\n    \"telefone\": \"41992395568\",\n    \"celular\": \"41985448412\",\n    \"email\": \"irmao@gmail.com\",\n    \"facebook\": \"https://facebook.com/joao-da-silva\",\n    \"infosAdicionais\": \"Adbasdhbabhhabdabajhdbajb\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/customers/:id",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"customers",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "62aec89a3c3862643aa245ba"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "customers/{id}",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/customers/:id",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"customers",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "62aec4843bd1fdb692f2f89d"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "localhost:3000",
+			"type": "string"
+		}
+	]
+}

@@ -1,0 +1,163 @@
+{
+	"info": {
+		"_postman_id": "791e3df8-7aea-40a6-9311-be2b3b9a68e4",
+		"name": "interactions",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "16537774"
+	},
+	"item": [
+		{
+			"name": "interactions/{idCliente}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/interactions/cliente/:idCliente",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"interactions",
+						"cliente",
+						":idCliente"
+					],
+					"variable": [
+						{
+							"key": "idCliente",
+							"value": "62aec89a3c3862643aa245ba"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "interactions",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"dataInteracao\": \"2022-06-19\",\n    \"idCliente\": \"62aec89a3c3862643aa244ba\",\n    \"meioContato\": \"WhatsApp\",\n    \"descricao\": \"Discutido sobre proposta de manutenções preventivas na linha de produção\",\n    \"clienteRespondeu\": \"S\"\n}"
+				},
+				"url": "{{baseUrl}}/interactions"
+			},
+			"response": []
+		},
+		{
+			"name": "interactions/{id}",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"dataInteracao\": \"2022-06-16\",\n    \"idCliente\": \"62aec89a3c3862643aa244ba\",\n    \"meioContato\": \"WhatsApp\",\n    \"descricao\": \"teste\",\n    \"clienteRespondeu\": \"S\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/interactions/:id",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"interactions",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "62aee1f08f20b201412dbd66"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "interactions/{id}",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/interactions/:id",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"interactions",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "62aee254901be368ada3980e"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "interactions/{id}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/interactions/:id",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"interactions",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "62aee1f08f20b201412dbd66"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "localhost:3000",
+			"type": "string"
+		}
+	]
+}
